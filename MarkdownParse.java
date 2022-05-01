@@ -20,6 +20,9 @@ public class MarkdownParse {
             if((openParen < 0) || (closeParen > markdown.length())){
                 break;
             }
+            if(markdown.substring(openBracket + 1, closeBracket).equals("Image")){
+                return null;
+            }
             if(openBracket == 0){
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
                 return toReturn;
