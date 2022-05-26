@@ -20,9 +20,27 @@ public class  MarkdownParseTest {
     }
 
     @Test
-    public void getLinks() throws IOException{
+    public void getLinks1() throws IOException{
         List result = List.of("`google.com","google.com","ucsd.edu");
         Path fileName = Path.of("Snippet1.md");
+        String content = Files.readString(fileName);
+        assertEquals(result,MarkdownParse.getLinks(content));
+    }
+
+    @Test
+    public void getLinks2() throws IOException{
+        List result = List.of("a.com","a.com(())", "example.com");
+        Path fileName = Path.of("Snippet2.md");
+        String content = Files.readString(fileName);
+        assertEquals(result,MarkdownParse.getLinks(content));
+    }
+
+    @Test
+    public void getLinks3() throws IOException{
+        List result = List.of("https://www.twitter.com", 
+        "https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule", 
+        "https://cse.ucsd.edu/");
+        Path fileName = Path.of("Snippet3.md");
         String content = Files.readString(fileName);
         assertEquals(result,MarkdownParse.getLinks(content));
     }
