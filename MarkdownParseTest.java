@@ -37,9 +37,7 @@ public class  MarkdownParseTest {
 
     @Test
     public void getLinks3() throws IOException{
-        List result = List.of("https://www.twitter.com", 
-        "https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule", 
-        "https://cse.ucsd.edu/");
+        List result = List.of("https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule");
         Path fileName = Path.of("Snippet3.md");
         String content = Files.readString(fileName);
         assertEquals(result,MarkdownParse.getLinks(content));

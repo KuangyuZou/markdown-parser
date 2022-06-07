@@ -13,6 +13,7 @@ public class MarkdownParse {
         int currentIndex = 0;
         int line = 1;
         while(currentIndex < markdown.length()) {
+            System.out.println(currentIndex);
             int openBracket = markdown.indexOf("[", currentIndex);
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
@@ -39,11 +40,16 @@ public class MarkdownParse {
 
 
     public static void main(String[] args) throws IOException {
-        Path fileName = Path.of(args[0]);
+        List result = List.of("https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule");
+        Path fileName = Path.of("Snippet3.md");
         String content = Files.readString(fileName);
         ArrayList<String> links = getLinks(content);
-	    System.out.println(links);
-        System.out.println("good day");
+        System.out.println(links);
+        // Path fileName = Path.of(args[0]);
+        // String content = Files.readString(fileName);
+        // ArrayList<String> links = getLinks(content);
+	    // System.out.println(links);
+        // System.out.println("good day");
 
     }
 }
