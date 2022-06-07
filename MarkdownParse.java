@@ -18,6 +18,10 @@ public class MarkdownParse {
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
+            if(nextOpenBracket == -1 || nextCloseBracket == -1
+                  || closeParen == -1 || openParen == -1) {
+                      return toReturn;
+                  }
             if((openParen < 0) || (closeParen > markdown.length())){
                 break;
             }
@@ -40,16 +44,10 @@ public class MarkdownParse {
 
 
     public static void main(String[] args) throws IOException {
-        List result = List.of("https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule");
-        Path fileName = Path.of("Snippet3.md");
+        Path fileName = Path.of(args[0]);
         String content = Files.readString(fileName);
         ArrayList<String> links = getLinks(content);
         System.out.println(links);
-        // Path fileName = Path.of(args[0]);
-        // String content = Files.readString(fileName);
-        // ArrayList<String> links = getLinks(content);
-	    // System.out.println(links);
-        // System.out.println("good day");
-
+    
     }
 }
